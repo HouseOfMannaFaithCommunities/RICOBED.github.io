@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact us & Donate</title>
+    <link rel="icon" href="./src/IMG_9982.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .qr-code {
+            display: flex;
+            justify-content: center;  /* Center horizontally */
+            align-items: center;      /* Center vertically */
+            height: 300px;            /* Set a height for the container */
+        }
+
+        .qr-code img {
+            width: 200px;  /* Adjust width */
+            height: 200px; /* Adjust height */
+        }
+        body {
+     font-family: 'Roboto', sans-serif;
+     margin: 0;
+     padding: 0;
+     background-color: #f9f9f9;
+   }
+
+   header {
+     background-color: #2c3e50;
+     color: white;
+     padding: 20px;
+     text-align: center;
+   }
+
+   nav {
+     display: flex;
+     justify-content: center;
+     background-color: #34495e;
+     padding: 10px;
+   }
+
+   nav a {
+     color: white;
+     text-decoration: none;
+     margin: 0 15px;
+     font-weight: bold;
+   }
+
+   nav a:hover {
+     text-decoration: underline;
+   }
+
+   .hero {
+     background: url('hero-image.jpg') no-repeat center center/cover;
+     height: 400px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     color: white;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+   }
+
+   .hero h1 {
+     font-size: 3rem;
+     margin: 0;
+   }
+
+   .mission {
+     padding: 20px;
+     text-align: center;
+   }
+
+   .mission h2 {
+     color: #2c3e50;
+   }
+
+   footer {
+     background-color: #2c3e50;
+     color: white;
+     text-align: center;
+     padding: 10px;
+   }
+
+   footer a {
+     color: #1abc9c;
+     text-decoration: none;
+   }
+
+   footer a:hover {
+     text-decoration: underline;
+   }
+ 
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Learn more and contact us </h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="donate.html">Gallery</a>
+    </nav>
+</header>
+
+<div class="container">
+    <section class="about"></section>
+        <h2>Who We Are</h2>
+        <p>House of Manna Faith Communities is a vibrant organization dedicated to nurturing faith, fostering community, and empowering individuals to make meaningful impacts in the world.</p>
+    
+        <h2>Our Vision</h2>
+        <p>We envision a community where love, compassion, and service create lasting change for generations to come.</p>
+    </section>
+
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <form action="#" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+</div>
+<h2>Donate to make a difference Today!</h2>
+<div class="qr-code">
+    <h2>Support Us</h2>
+    <p>Scan the QR code below to donate and support our mission:</p>
+    <img src="./src/Paypal qr code.png" alt="Donate QR Code">
+</div>
+
+<div id="threejs-canvas">
+    <canvas></canvas>
+</div>
+
+<footer>
+    <p>&copy; 2024 Your Company. All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script>
+    // Basic Three.js Setup
+    const canvas = document.querySelector('#threejs-canvas canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas });
+    renderer.setSize(window.innerWidth, 300);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 300, 0.1, 1000);
+    camera.position.z = 5;
+
+    const geometry = new THREE.TorusGeometry(1, 0.4, 16, 100);
+    const material = new THREE.MeshBasicMaterial({ color: 0x007BFF, wireframe: true });
+    const torus = new THREE.Mesh(geometry, material);
+    scene.add(torus);
+
+    function animate() {
+        requestAnimationFrame(animate);
+        torus.rotation.x += 0.01;
+        torus.rotation.y += 0.01;
+        renderer.render(scene, camera);
+    }
+
+    animate();
+</script>
+
+</body>
+</html>
+
+
